@@ -16,7 +16,7 @@ public class RaycastManager : MonoBehaviour
             if(Physics.Raycast(ray,out hit))
             {
                 TileInfo tileinfo = hit.collider.gameObject.GetComponentInParent<TileInfo>();
-                Debug.Log(tileinfo.gridPosX + "," + tileinfo.gridPosY);
+                //Debug.Log(tileinfo.gridPosX + "," + tileinfo.gridPosY);
                 coordinatesText.text = (tileinfo.gridPosX+1) + "," + (tileinfo.gridPosY+1);
                 indicator.SetActive(true);
                 indicator.transform.position = new Vector3(tileinfo.gridPosX + 0.5f, 1.02f ,tileinfo.gridPosY + 0.5f);

@@ -1089,6 +1089,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272262239}
   - component: {fileID: 272262240}
+  - component: {fileID: 272262241}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1124,6 +1125,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coordinatesText: {fileID: 614956279}
   indicator: {fileID: 198652316}
+--- !u!114 &272262241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272262238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c760dbb050355f4fab96f513c96b11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObstacleData: {fileID: 11400000, guid: 67ffcd00f4a73ad45b686e4ccf1ae98e, type: 2}
+  obstacle: {fileID: 8764657929723114383, guid: ed88e67ec582b5048ba9fcd8147a2086, type: 3}
 --- !u!1001 &273421370
 PrefabInstance:
   m_ObjectHideFlags: 0
