@@ -1,9 +1,10 @@
 # Rpg-Demo
-This Is a 10x10 grid based rpg demo with 3d isometric view.
+This Is a 10x10 grid based rpg demo with 3d isometric view. Uses BFS pathfinding to detect path avoiding the obstacles.
 ## Features
 
 - 10x10 Grid
 - Obstacle Generator
+- Path Finding
 
 ### 10x10 Grid
 
@@ -20,3 +21,12 @@ The Grid is made of 10 by 10 unity cubes. each cude has a [script](RpgProject/As
 
 [Obstacle Generator](RpgProject/Assets/Scripts/ObstacleGenerator.cs) is a unity window editor tool. It has 10x10 toggle buttons for obstacle info. On Generate obstacle it stores the obstacle data to a [scriptable object](RpgProject/Assets/Scripts/ObstacleScriptableObject.cs) specified in the tool.
 [Obstacle Manager Script](RpgProject/Assets/Scripts/ObstacleManager.cs) uses this object to generate obstacle at runtime. 
+
+### Pathfinding
+
+Breadth first search is used to find the path to target location avoiding the obstacles. 
+
+
+
+https://user-images.githubusercontent.com/54682356/146807004-76defda7-ab54-490d-b7ab-758fe87549c1.mp4
+
