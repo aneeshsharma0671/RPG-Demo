@@ -10,20 +10,21 @@ public class PlayerMovement : MonoBehaviour
     public Transform body;
     public Animator anim;
     public Vector2 currentwaypoint;
-
+    public bool moving = false;
     public void Update()
     {
         if (path.Count > 0)
         {
-            move();
-            GetComponent<RaycastInput>().enabled = false;
-            anim.SetBool("moving", true);
+            moving = true;
+            move();  
         }
         else
         {
-            anim.SetBool("moving", false);
-            GetComponent<RaycastInput>().enabled = true;
+            moving = false;
         }
+        GetComponent<RaycastInput>().enabled = !moving;
+        anim.SetBool("moving", moving);
+
     }
 
     public void SetPath(List<Vector2> _path)

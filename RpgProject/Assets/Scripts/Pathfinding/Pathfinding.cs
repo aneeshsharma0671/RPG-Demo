@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public Vector2 StartPos;
-    public Vector2 TargetPos;
     public ObstacleScriptableObject obstacleinfo;
-    public List<Vector2> Path;
-    public GameObject pathindicator;
-    public Transform pathParent;
+    Vector2 StartPos = new Vector2();
+    Vector2 TargetPos = new Vector2();
+    List<Vector2> Path = new List<Vector2>();
     Vector2[] dir = {new Vector2(0,1), new Vector2(0, -1), new Vector2(1, 0), new Vector2(-1, 0)};
     Queue<int> rq = new Queue<int>();
     Queue<int> cq = new Queue<int>();
     List<List<bool>> visited = new List<List<bool>>();
     List<List<int>> weight = new List<List<int>>();
-    int currenrw = 1;
+    int currentWeight = 1;
     int nodes_left_in_layer = 1;
     int nodes_in_next_layer = 0;
 
@@ -74,7 +72,7 @@ public class Pathfinding : MonoBehaviour
             {
                 nodes_left_in_layer = nodes_in_next_layer;
                 nodes_in_next_layer = 0;
-                currenrw++;
+                currentWeight++;
             }
         }
         
@@ -116,7 +114,7 @@ public class Pathfinding : MonoBehaviour
             rq.Enqueue(rr);
             cq.Enqueue(cc);
             visited[rr][cc] = true;
-            weight[rr][cc] = currenrw;
+            weight[rr][cc] = currentWeight;
             nodes_in_next_layer++;
         }
     }
@@ -126,7 +124,7 @@ public class Pathfinding : MonoBehaviour
         int sc = (int)TargetPos.y;
         Path.Clear();
         Path.Add(new Vector2(sr, sc));
-        while (currenrw > 0)
+        while (currentWeight > 0)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -139,7 +137,7 @@ public class Pathfinding : MonoBehaviour
                     continue;
                 if (obstacleinfo.obstacleData[rr].y[cc])
                     continue;
-                if (weight[rr][cc] == (currenrw - 1))
+                if (weight[rr][cc] == (currentWeight - 1))
                 {
                     Path.Add(new Vector2(rr, cc));
                     sr = rr;
@@ -147,7 +145,7 @@ public class Pathfinding : MonoBehaviour
                     break;
                 }
             }
-            currenrw--;
+            currentWeight--;
         }
         Path.Add(StartPos);
     }
